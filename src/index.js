@@ -44,13 +44,10 @@ export const game = (username, acc) => {
   const max = 100;
   const randomNumber = getRandomNumber(min, max);
 
-  // Определяем принимаемые ответы
-  const acceptableAnswers = ['no', 'yes'];
-
   console.log(`Question: ${randomNumber}`);
   const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
   const isEven = isEvenNumber(randomNumber);
-  const expectedAnswer = isEven ? acceptableAnswers[1] : acceptableAnswers[0];
+  const expectedAnswer = isEven ? 'yes' : 'no';
 
   if (userAnswer !== expectedAnswer) {
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.\n` +
