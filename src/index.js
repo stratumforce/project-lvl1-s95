@@ -30,7 +30,7 @@ const getRandomNumber = (min, max) => {
   return number;
 };
 
-export const game = (acc) => {
+export const game = (username, acc) => {
   // Передаваемый параметр acc - опциональный. Используется далее в качестве аккумулятора
 
   let correctAnswers = acc;
@@ -43,25 +43,22 @@ export const game = (acc) => {
   const min = 0;
   const max = 100;
   const randomNumber = getRandomNumber(min, max);
-  // Определяем принимаемые ответы: 'no' === 0 === false, 'yes' === 1 === true
+
+  // Определяем принимаемые ответы
   const acceptableAnswers = ['no', 'yes'];
 
   console.log(`Question: ${randomNumber}`);
-  const answer = readlineSync.question('Your answer: ');
-  const userChoice = acceptableAnswers.indexOf(answer.toLowerCase());
-  if (userChoice >= 0) {
-    const isEven = isEvenNumber(randomNumber);
-    // Используем особенности языка: +true === 1, +false === 0
-    if (userChoice === +isEven) {
-      console.log('Correct!');
-      correctAnswers += 1;
-    } else {
-      console.log('Wrong answer! Try again');
-    }
+  const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
+  const isEven = isEvenNumber(randomNumber);
+  const expectedAnswer = isEven ? acceptableAnswers[1] : acceptableAnswers[0];
+
+  if (userAnswer !== expectedAnswer) {
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.\n` +
+      `Let's try again, ${username}!`);
   } else {
-    // Любой некорректный ввод считается ошибкой (например, n) и равносилен неправильному ответу.
-    console.log(`Wrong answer! Acceptable answers are: "${acceptableAnswers.join('", "')}"`);
+    console.log('Correct!');
+    return game(username, correctAnswers + 1);
   }
 
-  return game(correctAnswers);
+  return false;
 };
