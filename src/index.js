@@ -14,23 +14,23 @@ const welcomeMessage = (caller) => {
   console.log(output);
 };
 
-const getUsername = () => {
-  const username = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${username}!`);
-  return username;
-};
+const getUsername = () => readlineSync.question('May I have your name? ');
+const greeting = username => console.log(`Hello, ${username}!`);
 
 const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
 const isEvenNumber = number => number % 2 === 0;
 
 export const runBrainGames = () => {
   welcomeMessage('brain-games');
-  getUsername();
+  const username = getUsername();
+  greeting(username);
 };
 
 export const runEvenGame = () => {
   welcomeMessage('brain-even');
   const username = getUsername();
+  greeting(username);
+
   const min = 0;
   const max = 100;
 
