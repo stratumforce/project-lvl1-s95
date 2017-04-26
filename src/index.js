@@ -1,6 +1,9 @@
 import readlineSync from 'readline-sync';
 
-const welcomeMessage = (caller) => {
+// welcomeMessage, greeting - функции описывают действия (get, show, check etc),
+// а действия в русском языке описываются глаголами.
+
+const printWelcomeMessage = (caller) => {
   let output = 'Welcome to the Brain Games!';
 
   switch (caller) {
@@ -8,6 +11,8 @@ const welcomeMessage = (caller) => {
       output += '\n'; break;
     case 'brain-even':
       output += '\nAnswer "yes" if number even otherwise answer "no".\n'; break;
+    case 'brain-calc':
+      output += '\nWhat is the result of the expression?\n'; break;
     default:
   }
 
@@ -15,31 +20,25 @@ const welcomeMessage = (caller) => {
 };
 
 const getUsername = () => readlineSync.question('May I have your name? ');
-const greeting = username => console.log(`Hello, ${username}!`);
+const printGreeting = username => console.log(`Hello, ${username}!\n`);
 
-const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
-const isEvenNumber = number => number % 2 === 0;
+export const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
 
 export const runBrainGames = () => {
-  welcomeMessage('brain-games');
+  printWelcomeMessage('brain-games');
   const username = getUsername();
-  greeting(username);
+  printGreeting(username);
 };
 
-export const runEvenGame = () => {
-  welcomeMessage('brain-even');
+export const runGame = (caller, gameFunc) => {
+  printWelcomeMessage(caller);
   const username = getUsername();
-  greeting(username);
-
-  const min = 0;
-  const max = 100;
+  printGreeting(username);
 
   for (let i = 0; i < 3; i += 1) {
-    const randomNumber = getRandomNumber(min, max);
-
-    console.log(`Question: ${randomNumber}`);
+    const [question, expectedAnswer] = gameFunc();
+    console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
-    const expectedAnswer = isEvenNumber(randomNumber) ? 'yes' : 'no';
 
     if (userAnswer !== expectedAnswer) {
       console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.\n` +
