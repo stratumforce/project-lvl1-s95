@@ -24,16 +24,12 @@ const printGreeting = username => console.log(`Hello, ${username}!\n`);
 
 export const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
 
-export const runBrainGames = () => {
-  printWelcomeMessage('brain-games');
-  const username = getUsername();
-  printGreeting(username);
-};
-
 export const runGame = (caller, gameFunc) => {
   printWelcomeMessage(caller);
   const username = getUsername();
   printGreeting(username);
+
+  if (gameFunc === undefined) return;
 
   for (let i = 0; i < 3; i += 1) {
     const [question, expectedAnswer] = gameFunc();
