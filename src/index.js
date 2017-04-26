@@ -13,6 +13,8 @@ const printWelcomeMessage = (caller) => {
       output += '\nAnswer "yes" if number even otherwise answer "no".\n'; break;
     case 'brain-calc':
       output += '\nWhat is the result of the expression?\n'; break;
+    case 'brain-gcd':
+      output += '\nFind the greatest common divisor of given numbers.\n'; break;
     default:
   }
 
