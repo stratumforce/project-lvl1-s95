@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-export const welcomeMessage = (caller) => {
+const welcomeMessage = (caller) => {
   let output = 'Welcome to the Brain Games!';
 
   switch (caller) {
@@ -14,7 +14,7 @@ export const welcomeMessage = (caller) => {
   console.log(output);
 };
 
-export const getUsername = () => {
+const getUsername = () => {
   const username = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${username}!`);
   return username;
@@ -31,10 +31,10 @@ export const runBrainGames = () => {
 export const runEvenGame = () => {
   welcomeMessage('brain-even');
   const username = getUsername();
+  const min = 0;
+  const max = 100;
 
   for (let i = 0; i < 3; i += 1) {
-    const min = 0;
-    const max = 100;
     const randomNumber = getRandomNumber(min, max);
 
     console.log(`Question: ${randomNumber}`);
