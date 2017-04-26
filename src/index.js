@@ -20,42 +20,34 @@ export const getUsername = () => {
   return username;
 };
 
-const isEvenNumber = (number) => {
-  if (number % 2 === 0) return true;
-  return false;
+const getRandomNumber = (min, max) => Math.floor(Math.random() * ((max - min) + 1)) + min;
+const isEvenNumber = number => number % 2 === 0;
+
+export const runBrainGames = () => {
+  welcomeMessage('brain-games');
+  getUsername();
 };
 
-const getRandomNumber = (min, max) => {
-  const number = Math.floor(Math.random() * ((max - min) + 1)) + min;
-  return number;
-};
+export const runEvenGame = () => {
+  welcomeMessage('brain-even');
+  const username = getUsername();
 
-export const game = (username, acc) => {
-  // Передаваемый параметр acc - опциональный. Используется далее в качестве аккумулятора
+  for (let i = 0; i < 3; i += 1) {
+    const min = 0;
+    const max = 100;
+    const randomNumber = getRandomNumber(min, max);
 
-  let correctAnswers = acc;
-  if (correctAnswers === undefined) correctAnswers = 0;
-  if (correctAnswers === 3) {
-    return true;
-  }
+    console.log(`Question: ${randomNumber}`);
+    const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
+    const expectedAnswer = isEvenNumber(randomNumber) ? 'yes' : 'no';
 
-  // Определяем границы случайного числа и создаем его
-  const min = 0;
-  const max = 100;
-  const randomNumber = getRandomNumber(min, max);
-
-  console.log(`Question: ${randomNumber}`);
-  const userAnswer = readlineSync.question('Your answer: ').toLowerCase();
-  const isEven = isEvenNumber(randomNumber);
-  const expectedAnswer = isEven ? 'yes' : 'no';
-
-  if (userAnswer !== expectedAnswer) {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.\n` +
-      `Let's try again, ${username}!`);
-  } else {
+    if (userAnswer !== expectedAnswer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${expectedAnswer}'.\n` +
+        `Let's try again, ${username}!`);
+      return;
+    }
     console.log('Correct!');
-    return game(username, correctAnswers + 1);
   }
 
-  return false;
+  console.log(`Congratulations, ${username}!`);
 };

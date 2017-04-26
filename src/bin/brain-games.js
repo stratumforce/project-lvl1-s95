@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import { welcomeMessage, getUsername } from '..';
+import { runBrainGames } from '..';
 
-welcomeMessage('brain-games');
-getUsername();
+runBrainGames();
