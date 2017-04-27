@@ -2,7 +2,6 @@ import runGame from '../index';
 import getRandomNumber from '../functions';
 
 const description = 'What is the result of the expression?';
-const gameRounds = 3;
 
 const min = 0;
 const max = 50;
@@ -32,5 +31,5 @@ const runCalc = () => {
 };
 
 export default() => {
-  runGame(description, gameRounds, runCalc);
+  runGame(description, runCalc);
 };

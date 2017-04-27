@@ -1,7 +1,9 @@
 import readlineSync from 'readline-sync';
 import { printWelcomeMessage, getUsername, printGreeting } from './functions';
 
-export default(description, gameRounds, gameFunction) => {
+const gameRounds = 3;
+
+export default(description, gameFunction) => {
   printWelcomeMessage();
   console.log(`${description}`);
   const username = getUsername();

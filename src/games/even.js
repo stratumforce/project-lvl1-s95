@@ -2,7 +2,6 @@ import runGame from '../index';
 import getRandomNumber from '../functions';
 
 const description = 'Answer "yes" if number even otherwise answer "no".';
-const gameRounds = 3;
 
 const min = 0;
 const max = 100;
@@ -19,5 +18,5 @@ const runEven = () => {
 };
 
 export default() => {
-  runGame(description, gameRounds, runEven);
+  runGame(description, runEven);
 };

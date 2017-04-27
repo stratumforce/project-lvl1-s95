@@ -2,7 +2,6 @@ import runGame from '../index';
 import getRandomNumber from '../functions';
 
 const description = 'Find the greatest common divisor of given numbers.';
-const gameRounds = 3;
 
 // Наибольший общий делитель существует и однозначно определён,
 // если хотя бы одно из чисел не равно нулю.
@@ -23,5 +22,5 @@ const runGcd = () => {
 };
 
 export default() => {
-  runGame(description, gameRounds, runGcd);
+  runGame(description, runGcd);
 };
