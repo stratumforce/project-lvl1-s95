@@ -1,5 +1,5 @@
 import runGame from '../index';
-import getRandomNumber from '../functions';
+import { getRandomNumber } from '../functions';
 
 const description = 'Answer "yes" if number even otherwise answer "no".';
 

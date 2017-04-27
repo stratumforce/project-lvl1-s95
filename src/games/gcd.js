@@ -1,5 +1,5 @@
 import runGame from '../index';
-import getRandomNumber from '../functions';
+import { getRandomNumber } from '../functions';
 
 const description = 'Find the greatest common divisor of given numbers.';
 

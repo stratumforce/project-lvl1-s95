@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { printWelcomeMessage, getUsername, printGreeting } from './functions';
+import printWelcomeMessage, { getUsername, printGreeting } from './functions';
 
 const gameRounds = 3;
 

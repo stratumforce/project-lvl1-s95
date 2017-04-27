@@ -1,4 +1,4 @@
-import { printWelcomeMessage, getUsername, printGreeting } from '../functions';
+import printWelcomeMessage, { getUsername, printGreeting } from '../functions';
 
 export default() => {
   printWelcomeMessage();
