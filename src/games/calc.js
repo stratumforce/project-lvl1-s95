@@ -1,15 +1,19 @@
-import { runGame, getRandomNumber } from '..';
+import runGame from '../index';
+import getRandomNumber from '../functions';
+
+const description = 'What is the result of the expression?';
+const gameRounds = 3;
+
+const min = 0;
+const max = 50;
 
 const availableOperations = ['+', '-', '*'];
 
-export const runCalc = () => {
-  const min = 0;
-  let max = 50;
+const runCalc = () => {
   const randomNumber1 = getRandomNumber(min, max);
   const randomNumber2 = getRandomNumber(min, max);
 
-  max = 2;
-  const operation = availableOperations[getRandomNumber(min, max)];
+  const operation = availableOperations[getRandomNumber(0, availableOperations.length - 1)];
 
   const question = `${randomNumber1} ${operation} ${randomNumber2}`;
   let expectedAnswer = '';
@@ -27,9 +31,6 @@ export const runCalc = () => {
   return [question, expectedAnswer.toString()];
 };
 
-export const runCalcGame = () => {
-  const description = 'What is the result of the expression?';
-  runGame(description, runCalc);
+export default() => {
+  runGame(description, gameRounds, runCalc);
 };
-
-export default runCalcGame;
