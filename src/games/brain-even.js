@@ -14,7 +14,8 @@ const runEven = () => {
 };
 
 export const runEvenGame = () => {
-  runGame('brain-even', runEven);
+  const description = 'Answer "yes" if number even otherwise answer "no".';
+  runGame(description, runEven);
 };
 
 export default runEvenGame;

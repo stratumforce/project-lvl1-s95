@@ -28,7 +28,8 @@ export const runCalc = () => {
 };
 
 export const runCalcGame = () => {
-  runGame('brain-calc', runCalc);
+  const description = 'What is the result of the expression?';
+  runGame(description, runCalc);
 };
 
 export default runCalcGame;

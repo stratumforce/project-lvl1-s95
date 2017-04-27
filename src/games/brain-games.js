@@ -1,7 +1,7 @@
 import { runGame } from '..';
 
 export const runBrainGames = () => {
-  runGame('brain-games');
+  runGame();
 };
 
 export default runBrainGames;

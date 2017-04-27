@@ -19,7 +19,8 @@ export const runGcd = () => {
 };
 
 export const runGcdGame = () => {
-  runGame('brain-gcd', runGcd);
+  const description = 'Find the greatest common divisor of given numbers.';
+  runGame(description, runGcd);
 };
 
 export default runGcdGame;
