@@ -1,14 +1,14 @@
 import readlineSync from 'readline-sync';
 import { printWelcomeMessage, getUsername, printGreeting } from './functions';
 
-export default(description, gameRounds, runGame) => {
+export default(description, gameRounds, gameFunction) => {
   printWelcomeMessage();
   console.log(`${description}`);
   const username = getUsername();
   printGreeting(username);
 
   for (let i = 0; i < gameRounds; i += 1) {
-    const [question, expectedAnswer] = runGame();
+    const [question, expectedAnswer] = gameFunction();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
