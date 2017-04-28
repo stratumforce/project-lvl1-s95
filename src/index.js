@@ -1,16 +1,15 @@
 import readlineSync from 'readline-sync';
-import printWelcomeMessage, { getUsername, printGreeting } from './functions';
 
 const gameRounds = 3;
 
-export default(description, gameFunction) => {
-  printWelcomeMessage();
+export default(description, game) => {
+  console.log('Welcome to the Brain Games!');
   console.log(`${description}`);
-  const username = getUsername();
-  printGreeting(username);
+  const username = readlineSync.question('\nMay I have your name? ');
+  console.log(`Hello, ${username}!\n`);
 
   for (let i = 0; i < gameRounds; i += 1) {
-    const [question, expectedAnswer] = gameFunction();
+    const [question, expectedAnswer] = game();
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
 
