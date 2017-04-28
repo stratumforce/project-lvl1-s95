@@ -6,12 +6,12 @@ const description = 'Balance the given number.';
 const minNumberSize = 2;
 const maxNumberSize = 4;
 
-const getHighLowValue = (arrayNumber) => {
+const getHighLowValue = (number) => {
   let highestNumber = 0;
   let lowestNumber = 9;
-  for (let i = 0; i < arrayNumber.length; i += 1) {
-    if (arrayNumber[i] > highestNumber) highestNumber = arrayNumber[i];
-    if (arrayNumber[i] < lowestNumber) lowestNumber = arrayNumber[i];
+  for (let i = 0; i < number.length; i += 1) {
+    if (number[i] > highestNumber) highestNumber = number[i];
+    if (number[i] < lowestNumber) lowestNumber = number[i];
   }
   return [highestNumber, lowestNumber];
 };
