@@ -1,4 +1,4 @@
-import runGame from '../index';
+import runGame from '..';
 import { getRandomNumber } from '../functions';
 
 const description = 'Balance the given number.';
